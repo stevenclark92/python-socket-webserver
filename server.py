@@ -19,7 +19,7 @@ serv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serv.bind((host, port))
 
 #Listen for connections
-serv.listen(1)
+serv.listen(0)
 
 #A while loop to check for connections
 while 1:
@@ -27,7 +27,6 @@ while 1:
 	client, (c_host, c_port) = serv.accept()
 	request = client.recv(4096)
 	print("Connection received from ", c_host, c_port)
-	print(client)
 	#Watch syntax here.
 	http_response = """HTTP/1.0 200 OK\n"""
 	client.send(http_response)
